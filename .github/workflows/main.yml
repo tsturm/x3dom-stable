@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          name: ${{ github.event.client_payload.repository }}
+          repository: ${{ github.event.client_payload.repository }}
           ref: ${{ github.event.client_payload.ref }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           path: x3dom
