@@ -11,11 +11,9 @@ jobs:
           repository: ${{ github.event.client_payload.repository }}
           ref: ${{ github.event.client_payload.ref }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          path: x3dom
       - uses: actions/setup-node@v3.6.0
         with:
           node-version: 16.x
-      - run: cd x3dom
       - run: npm install
       - run: npm run build
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
