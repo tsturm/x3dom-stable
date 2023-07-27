@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.event.client_payload.tag_name }}
-      - run: echo ${{ github.event.client_payload.ref }}
+      - run: echo ${{ github.event.client_payload.github }}
