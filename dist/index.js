@@ -6,4 +6,6 @@ log("foo");
 warn("bar");
 log("foo");
 error("blub");
+error("blub");
+error("blub");
 //# sourceMappingURL=index.js.map
