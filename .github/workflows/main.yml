@@ -27,6 +27,7 @@ jobs:
           path: dist/
   downloadCommitAndPushRelease:
     runs-on: ubuntu-latest
+    needs: checkoutBuildAndUploadRelase
     steps:
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
       - run: echo ${{ github.event.client_payload.ref }}
