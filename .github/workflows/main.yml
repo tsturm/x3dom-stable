@@ -60,5 +60,5 @@ jobs:
           automatic_release_tag: "${{ github.event.client_payload.tag_name }}"
           repo_token: "${{ secrets.REPO_ACCESS_TOKEN }}"
           prerelease: false
-          files: |
-            *.js
+          files: dist/*.js
+            
