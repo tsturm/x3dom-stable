@@ -29,5 +29,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: checkoutBuildAndUploadRelase
     steps:
+      - name: Checkout current head
+        uses: actions/checkout@v3
+      - name: Remove entire dist-folder
+        run: git rm -r dist/
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: x3dom-dist
+      - name: List directory
+        run: ls -R
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
       - run: echo ${{ github.event.client_payload.ref }}
