@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [x3dom-release]
 jobs:
-  publishRelase:
+  checkoutBuildAndUploadRelase:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
