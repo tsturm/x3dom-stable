@@ -43,6 +43,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: x3dom-dist
+          path: dist/
       - name: List directory
         run: ls -R
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
