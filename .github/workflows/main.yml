@@ -6,15 +6,27 @@ jobs:
   checkoutBuildAndUploadRelase:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Release
+        uses: actions/checkout@v3
         with:
           repository: ${{ github.event.client_payload.repository }}
           ref: ${{ github.event.client_payload.ref }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-      - uses: actions/setup-node@v3.6.0
+      - name: Setup Node
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: 16.x
-      - run: npm install
-      - run: npm run build
+      - name: Build release
+        run: |
+          npm install
+          npm run build
+      - name: Upload Artifacts
+        uses: actions/upload-artifacts@v3
+        with:
+          name: x3dom-dist
+          path: dist/
+  downloadCommitAndPushRelease:
+    runs-on: ubuntu-latest
+    steps:
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
       - run: echo ${{ github.event.client_payload.ref }}
