@@ -46,5 +46,9 @@ jobs:
           path: dist/
       - name: List directory
         run: ls -R
+      - name: Add etire dist folder to git
+        run: git add dist
+      - name: Check Status
+        run: git status
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
       - run: echo ${{ github.event.client_payload.ref }}
