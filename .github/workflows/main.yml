@@ -1,7 +1,7 @@
 name: Repository Dispatch
 on:
   repository_dispatch:
-    types: [x3dom-release]
+    types: [x3dom-released]
 jobs:
   checkoutBuildAndUploadRelase:
     runs-on: ubuntu-latest
@@ -44,11 +44,10 @@ jobs:
         with:
           name: x3dom-dist
           path: dist/
-      - name: List directory
-        run: ls -R
-      - name: Add etire dist folder to git
-        run: git add dist
-      - name: Check Status
-        run: git status
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'dist/'
+          message: github.event.client_payload.tag_name
       - run: echo ${{ github.event.client_payload.repositoryUrl }}
       - run: echo ${{ github.event.client_payload.ref }}
