@@ -1,6 +1,6 @@
 # X3DOM - Stable Builds via jsDelivr
 
-This repository serves as a source for obtaining a stable build of the X3DOM library through the jsDelivr content delivery network (CDN).
+This repository serves as a source for obtaining stable builds of the X3DOM library through the jsDelivr content delivery network (CDN).
 
 ## Usage
 To include one of the stable builds of X3DOM in your web application, you can use the following URL in your HTML code:
