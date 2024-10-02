@@ -1,8 +1,8 @@
 /** 
  * X3DOM 1.8.3-dev
  * Build : 1
- * Revision: ac3167b0dc43560ba2dc85cb949bb154015bd90d
- * Date: Mon Jul 31 23:19:18 2023 +0200
+ * Revision: db81b22cf0de0b0efe12c3e8d5435db592cae4d3
+ * Date: Wed Oct 2 20:55:19 2024 +0200
  */
 /**
  * X3DOM JavaScript Library
@@ -30,8 +30,8 @@ var x3dom = {
 x3dom.about = {
     version  : "1.8.3-dev",
     build    : "1",
-    revision : "ac3167b0dc43560ba2dc85cb949bb154015bd90d",
-    date     : "Mon Jul 31 23:19:18 2023 +0200"
+    revision : "db81b22cf0de0b0efe12c3e8d5435db592cae4d3",
+    date     : "Wed Oct 2 20:55:19 2024 +0200"
 };
 
 /**
@@ -23023,6 +23023,8 @@ x3dom.Mesh = function ( parent )
     this._invalidate = true;
     this._numFaces = 0;
     this._numCoords = 0;
+
+    
 
     // cp. x3dom.Utils.primTypeDic for type list
     this._primType = "TRIANGLES";
@@ -57590,7 +57592,6 @@ x3dom.DefaultNavigation.prototype.onDoubleClick = function ( view, x, y )
     view.animateTo( mat.inverse(), viewpoint );
 };
 
-
 x3dom.TurntableNavigation = function ( navigationNode )
 {
     x3dom.DefaultNavigation.call( this, navigationNode );
@@ -57957,7 +57958,9 @@ x3dom.TurntableNavigation.prototype.animateTo = function ( view, target, prev, d
     var navi = this.navi;
     var targetMat;
 
-    if ( x3dom.isa( target, x3dom.nodeTypes.X3DViewpointNode ) )
+    view._mixer._isVPtarget = x3dom.isa( target, x3dom.nodeTypes.X3DViewpointNode );
+
+    if ( view._mixer._isVPtarget )
     {
         targetMat = x3dom.fields.SFMatrix4f.lookAt( target._vf.position, target.getCenterOfRotation(), new x3dom.fields.SFVec3f( 0, 1, 0 ) );
     }
